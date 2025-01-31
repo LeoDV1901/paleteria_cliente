@@ -8,7 +8,8 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f7f7f7;
+            background: rgba(255, 255, 255, 0.8) url('https://i.pinimg.com/736x/68/62/64/6862640ba0648fecc7dd55fcf305f346.jpg') no-repeat center center fixed;
+            background-size: cover;
             margin: 0;
             padding: 0;
             display: flex;
@@ -27,7 +28,7 @@
         .container {
             width: 90%;
             max-width: 360px;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9); /* semi-transparent background for the container */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
@@ -61,8 +62,9 @@
         }
 
         .product img {
-            width: 40px;
-            height: 40px;
+            width: 30px; /* Reducir el tamaño de la imagen */
+            height: 30px; /* Reducir el tamaño de la imagen */
+            object-fit: cover; /* Para mantener la relación de aspecto */
         }
 
         .product h3 {
@@ -124,6 +126,41 @@
             display: none;
         }
 
+        /* Estilos para pantallas pequeñas */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px; /* Reducir el tamaño del título */
+            }
+
+            .container {
+                width: 95%; /* Asegura que el contenedor ocupe más espacio en pantallas pequeñas */
+                max-width: 100%;
+            }
+
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu div {
+                font-size: 16px; /* Hacer los botones de menú más pequeños */
+                padding: 8px;
+                margin: 5px 0;
+            }
+
+            .product {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product h3 {
+                font-size: 16px; /* Reducir tamaño del nombre del producto */
+            }
+
+            .quantity-controls {
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -149,19 +186,19 @@
     <script>
         const products = {
             paletas: [
-                { name: "Paleta Chica Cuadrada", price: 14, img: "https://via.placeholder.com/40" },
-                { name: "Paleta Chica Redonda", price: 12, img: "https://via.placeholder.com/40" },
-                { name: "Paleta Leche", price: 28, img: "https://via.placeholder.com/40" },
-                { name: "Paleta", price: 20, img: "https://via.placeholder.com/40" },
-                { name: "Sandwich", price: 20, img: "https://via.placeholder.com/40" }
+                { name: "Paleta Chica Cuadrada", price: 14 },
+                { name: "Paleta Chica Redonda", price: 12 },
+                { name: "Paleta Leche", price: 28 },
+                { name: "Paleta", price: 20 },
+                { name: "Sandwich", price: 20 }
             ],
             helados: [
-                { name: "Sencillo", price: 17, img: "https://via.placeholder.com/40" },
-                { name: "Dorado (1 Bola)", price: 20, img: "https://via.placeholder.com/40" },
-                { name: "Doble", price: 28, img: "https://via.placeholder.com/40" },
-                { name: "Dorado (Doble)", price: 30, img: "https://via.placeholder.com/40" },
-                { name: "Helado en Vaso", price: 17, img: "https://via.placeholder.com/40" },
-                { name: "1/2 litro", price: 300, img: "https://via.placeholder.com/40" }
+                { name: "Sencillo", price: 17 },
+                { name: "Dorado (1 Bola)", price: 20 },
+                { name: "Doble", price: 28 },
+                { name: "Dorado (Doble)", price: 30 },
+                { name: "Helado en Vaso", price: 17 },
+                { name: "1/2 litro", price: 75 }
             ]
         };
 
@@ -175,7 +212,6 @@
                 const productDiv = document.createElement('div');
                 productDiv.classList.add('product');
                 productDiv.innerHTML = `
-                    <img src="${product.img}" alt="${product.name}">
                     <h3>${product.name}</h3>
                     <div class="quantity-controls">
                         <button onclick="updateQuantity('${type}', ${index}, -1)">-</button>
