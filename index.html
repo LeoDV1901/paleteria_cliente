@@ -28,15 +28,16 @@
         .container {
             width: 90%;
             max-width: 360px;
-            background-color: rgba(255, 255, 255, 0.9); /* semi-transparent background for the container */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for the container */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            text-align: center;
         }
 
         .menu {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-around; /* Make sure the buttons are spaced out on large screens */
             margin-bottom: 20px;
         }
 
@@ -62,9 +63,9 @@
         }
 
         .product img {
-            width: 30px; /* Reducir el tamaño de la imagen */
-            height: 30px; /* Reducir el tamaño de la imagen */
-            object-fit: cover; /* Para mantener la relación de aspecto */
+            width: 30px; /* Smaller image size */
+            height: 30px; /* Smaller image size */
+            object-fit: cover;
         }
 
         .product h3 {
@@ -129,32 +130,33 @@
         /* Estilos para pantallas pequeñas */
         @media (max-width: 600px) {
             h1 {
-                font-size: 28px; /* Reducir el tamaño del título */
+                font-size: 28px; /* Reduce the title font size */
             }
 
             .container {
-                width: 95%; /* Asegura que el contenedor ocupe más espacio en pantallas pequeñas */
+                width: 95%;
                 max-width: 100%;
+                padding: 15px;
             }
 
             .menu {
-                flex-direction: column;
+                flex-direction: column; /* Stack buttons vertically */
                 align-items: center;
             }
 
             .menu div {
-                font-size: 16px; /* Hacer los botones de menú más pequeños */
-                padding: 8px;
-                margin: 5px 0;
+                font-size: 16px;
+                padding: 12px;
+                margin: 5px 0; /* Add spacing between menu items */
             }
 
             .product {
-                flex-direction: column;
+                flex-direction: column; /* Stack product info vertically */
                 align-items: flex-start;
             }
 
             .product h3 {
-                font-size: 16px; /* Reducir tamaño del nombre del producto */
+                font-size: 16px;
             }
 
             .quantity-controls {
