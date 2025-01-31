@@ -37,7 +37,7 @@
 
         .menu {
             display: flex;
-            justify-content: space-around; /* Make sure the buttons are spaced out on large screens */
+            justify-content: center; /* Center both buttons */
             margin-bottom: 20px;
         }
 
@@ -47,6 +47,7 @@
             padding: 10px;
             border-radius: 10px;
             transition: background-color 0.3s ease;
+            margin: 0 10px;
         }
 
         .menu div:hover {
@@ -58,19 +59,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px;
+            padding: 8px;
             border-bottom: 1px solid #e0e0e0;
-        }
-
-        .product img {
-            width: 30px; /* Smaller image size */
-            height: 30px; /* Smaller image size */
-            object-fit: cover;
+            font-size: 16px; /* Smaller font size for product items */
         }
 
         .product h3 {
             margin: 0;
-            font-size: 18px;
+            font-size: 16px;
+            flex: 1;
         }
 
         .quantity-controls {
@@ -92,10 +89,16 @@
         .quantity-controls input {
             width: 40px;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 5px;
             margin: 0 5px;
+        }
+
+        .product span {
+            font-size: 16px; /* Adjust font size of the price */
+            color: #FF6347;
+            font-weight: bold;
         }
 
         .total {
@@ -140,27 +143,29 @@
             }
 
             .menu {
-                flex-direction: column; /* Stack buttons vertically */
+                flex-direction: row; /* Keep menu in a row */
                 align-items: center;
             }
 
             .menu div {
                 font-size: 16px;
                 padding: 12px;
-                margin: 5px 0; /* Add spacing between menu items */
+                margin: 0 10px; /* Add spacing between menu items */
             }
 
             .product {
-                flex-direction: column; /* Stack product info vertically */
-                align-items: flex-start;
+                flex-direction: row; /* Align product info horizontally */
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px;
             }
 
             .product h3 {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             .quantity-controls {
-                margin-top: 10px;
+                margin-top: 0;
             }
         }
     </style>
@@ -215,12 +220,12 @@
                 productDiv.classList.add('product');
                 productDiv.innerHTML = `
                     <h3>${product.name}</h3>
+                    <span>$${product.price}</span>
                     <div class="quantity-controls">
                         <button onclick="updateQuantity('${type}', ${index}, -1)">-</button>
                         <input type="text" value="0" id="${type}-${index}-quantity" readonly>
                         <button onclick="updateQuantity('${type}', ${index}, 1)">+</button>
                     </div>
-                    <span>$${product.price}</span>
                 `;
                 document.getElementById("product-list").appendChild(productDiv);
             });
